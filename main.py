@@ -29,6 +29,9 @@ link_enter = Entry(canvas, width = 55,textvariable = link, justify=CENTER).place
 
 
 def video_downlaoder():
+    if not link.get():
+        return
+        
     url = YouTube(str(link.get()))
     video = url.streams.filter(progressive=True, file_extension='mp4').get_highest_resolution()
     video.download()
